@@ -1,0 +1,220 @@
+[
+  {
+    "id": "sample_image",
+    "description": "Sample lab report image with a high-cholesterol lipid profile.",
+    "inputs": {
+      "image": "images/blood_work.png"
+    },
+    "outputs": {
+      "findings": [
+        "high cholesterol",
+        "high ldl",
+        "low hdl",
+        "high triglycerides"
+      ]
+    }
+  },
+  {
+    "id": "anemia_b12",
+    "description": "Anaemia with low vitamin B12.",
+    "inputs": {
+      "report": "Hemoglobin: 10.2 g/dL (Ref: 13.5-17.5)\nWBC: 7.1 x10^3/uL (Ref: 4.5-11.0)\nFasting Glucose: 88 mg/dL (Ref: 70-99)\nVitamin B12: 150 pg/mL (Ref: 200-900)\nTotal Cholesterol: 175 mg/dL (Ref: <200)"
+    },
+    "outputs": {
+      "findings": [
+        "low hemoglobin",
+        "low vitamin b12"
+      ]
+    }
+  },
+  {
+    "id": "diabetes_vitd",
+    "description": "High glucose and HbA1c with low vitamin D.",
+    "inputs": {
+      "report": "Fasting Glucose: 136 mg/dL (Ref: 70-99)\nHbA1c: 7.1 % (Ref: <5.7)\nVitamin D (25-OH): 18 ng/mL (Ref: 30-100)\nHemoglobin: 14.8 g/dL (Ref: 13.5-17.5)\nLDL Cholesterol: 92 mg/dL (Ref: <100)"
+    },
+    "outputs": {
+      "findings": [
+        "high glucose",
+        "low vitamin d"
+      ]
+    }
+  },
+  {
+    "id": "lipids_vitd",
+    "description": "High triglycerides, low HDL and low vitamin D.",
+    "inputs": {
+      "report": "Triglycerides: 210 mg/dL (Ref: <150)\nHDL Cholesterol: 35 mg/dL (Ref: >40)\nLDL Cholesterol: 95 mg/dL (Ref: <100)\nVitamin D (25-OH): 22 ng/mL (Ref: 30-100)\nFasting Glucose: 94 mg/dL (Ref: 70-99)"
+    },
+    "outputs": {
+      "findings": [
+        "high triglycerides",
+        "low hdl",
+        "low vitamin d"
+      ]
+    }
+  },
+  {
+    "id": "all_normal",
+    "description": "Every value inside its reference range.",
+    "inputs": {
+      "report": "Hemoglobin: 14.2 g/dL (Ref: 13.5-17.5)\nFasting Glucose: 85 mg/dL (Ref: 70-99)\nTotal Cholesterol: 168 mg/dL (Ref: <200)\nHDL Cholesterol: 55 mg/dL (Ref: >40)\nVitamin D (25-OH): 42 ng/mL (Ref: 30-100)"
+    },
+    "outputs": {
+      "findings": []
+    }
+  },
+  {
+    "id": "borderline_normal",
+    "description": "Values exactly at the edge of the range; all are still normal and must not be flagged.",
+    "inputs": {
+      "report": "Fasting Glucose: 99 mg/dL (Ref: 70-99)\nHemoglobin: 13.5 g/dL (Ref: 13.5-17.5)\nTriglycerides: 149 mg/dL (Ref: <150)\nLDL Cholesterol: 99 mg/dL (Ref: <100)\nVitamin D (25-OH): 30 ng/mL (Ref: 30-100)"
+    },
+    "outputs": {
+      "findings": []
+    }
+  },
+  {
+    "id": "borderline_abnormal",
+    "description": "Values just one unit outside the range; all must be flagged.",
+    "inputs": {
+      "report": "Fasting Glucose: 100 mg/dL (Ref: 70-99)\nHemoglobin: 13.4 g/dL (Ref: 13.5-17.5)\nTriglycerides: 151 mg/dL (Ref: <150)\nLDL Cholesterol: 98 mg/dL (Ref: <100)\nVitamin D (25-OH): 31 ng/mL (Ref: 30-100)"
+    },
+    "outputs": {
+      "findings": [
+        "high glucose",
+        "low hemoglobin",
+        "high triglycerides"
+      ]
+    }
+  },
+  {
+    "id": "aliases_and_units",
+    "description": "Abbreviations, chemical names and mmol/L units the tool names don't match directly.",
+    "inputs": {
+      "report": "Hb: 9.8 g% (Ref 13-17)\nFBS: 92 mg/dL (Ref 70-100)\nTG: 2.6 mmol/L (Ref <1.7)\nSerum Cobalamin: 160 pg/mL (Ref 211-911)\n25-hydroxy cholecalciferol: 14 ng/mL (Ref 30-100)\nNon-HDL cholesterol: 3.1 mmol/L (Ref <3.4)"
+    },
+    "outputs": {
+      "findings": [
+        "low hemoglobin",
+        "high triglycerides",
+        "low vitamin b12",
+        "low vitamin d"
+      ]
+    }
+  },
+  {
+    "id": "hl_flags_no_range",
+    "description": "Lab printed only H/L flags, no reference ranges.",
+    "inputs": {
+      "report": "LDL-C ........ 171 mg/dL  H\nHDL-C ........ 33 mg/dL   L\nGlucose (F) .. 90 mg/dL\nHgb .......... 15.0 g/dL\nVit D ........ 41 ng/mL"
+    },
+    "outputs": {
+      "findings": [
+        "high ldl",
+        "low hdl"
+      ]
+    }
+  },
+  {
+    "id": "unsupported_tests",
+    "description": "Abnormal tests the diet tool doesn't cover (uric acid, TSH) must be reported but not sent to the tool.",
+    "inputs": {
+      "report": "Uric Acid: 8.9 mg/dL (Ref: 3.4-7.0)\nTSH: 7.8 uIU/mL (Ref: 0.4-4.0)\nVitamin D (25-OH): 21 ng/mL (Ref: 30-100)\nHemoglobin: 14.1 g/dL (Ref: 13.5-17.5)\nFasting Glucose: 91 mg/dL (Ref: 70-99)"
+    },
+    "outputs": {
+      "findings": [
+        "low vitamin d"
+      ],
+      "must_mention": [
+        "uric acid",
+        "tsh"
+      ]
+    }
+  },
+  {
+    "id": "long_messy_report",
+    "description": "Full 25-test lab report with headers and patient details; only HbA1c is abnormal.",
+    "inputs": {
+      "report": "APOLLO CLINICAL LABORATORIES\nPatient Name: Mr. Karan Mehta     Age/Sex: 45 Y / M     Lab No: 2026-118834\nReferred By: Dr. S. Iyer          Collected: 12-Nov-2026 08:10     Reported: 12-Nov-2026 14:32\n\nCOMPLETE BLOOD COUNT\nHemoglobin              14.6    g/dL        13.0 - 17.0\nRBC Count               5.02    mill/cumm   4.5 - 5.5\nPCV                     44.1    %           40 - 50\nMCV                     87.8    fL          83 - 101\nWBC Count               6800    /cumm       4000 - 10000\nPlatelet Count          2.6     lakh/cumm   1.5 - 4.1\n\nLIVER FUNCTION TEST\nBilirubin Total         0.8     mg/dL       0.3 - 1.2\nSGOT (AST)              28      U/L         < 40\nSGPT (ALT)              31      U/L         < 41\nAlkaline Phosphatase    86      U/L         40 - 129\nAlbumin                 4.4     g/dL        3.5 - 5.2\n\nKIDNEY FUNCTION TEST\nUrea                    26      mg/dL       17 - 43\nCreatinine              0.94    mg/dL       0.7 - 1.3\nUric Acid               5.9     mg/dL       3.5 - 7.2\n\nDIABETES PROFILE\nFasting Plasma Glucose  97      mg/dL       70 - 99\nHbA1c                   6.4     %           < 5.7\n\nLIPID PROFILE\nTotal Cholesterol       182     mg/dL       < 200\nTriglycerides           131     mg/dL       < 150\nHDL Cholesterol         47      mg/dL       > 40\nLDL Cholesterol         96      mg/dL       < 100\n\nTHYROID\nTSH                     2.3     uIU/mL      0.4 - 4.2\n\n*** End of Report ***  Electronically verified by Dr. A. Kulkarni, MD Pathology"
+    },
+    "outputs": {
+      "findings": [
+        "high glucose"
+      ]
+    }
+  },
+  {
+    "id": "ldl_only",
+    "description": "Total cholesterol is normal but LDL is high; only LDL should be flagged.",
+    "inputs": {
+      "report": "Total Cholesterol: 196 mg/dL (Ref: <200)\nLDL Cholesterol: 138 mg/dL (Ref: <100)\nHDL Cholesterol: 48 mg/dL (Ref: >40)\nTriglycerides: 118 mg/dL (Ref: <150)\nFasting Glucose: 88 mg/dL (Ref: 70-99)"
+    },
+    "outputs": {
+      "findings": [
+        "high ldl"
+      ]
+    }
+  },
+  {
+    "id": "image_hl_flags",
+    "description": "Report image with an H/L flag column and no reference ranges.",
+    "inputs": {
+      "image": "images/report_hl_flags.png"
+    },
+    "outputs": {
+      "findings": [
+        "high glucose",
+        "high triglycerides",
+        "low hdl"
+      ]
+    }
+  },
+  {
+    "id": "image_phone_photo",
+    "description": "Tilted, blurred, unevenly lit phone photo of a report (female ranges; MCV is low but unsupported).",
+    "inputs": {
+      "image": "images/report_phone_photo.jpg"
+    },
+    "outputs": {
+      "findings": [
+        "low hemoglobin",
+        "low vitamin b12",
+        "low vitamin d"
+      ]
+    }
+  },
+  {
+    "id": "off_topic_image",
+    "description": "A cat photo, not a blood report: the agent must say so and not call the diet tool.",
+    "inputs": {
+      "image": "images/cat.jpg"
+    },
+    "outputs": {
+      "findings": [],
+      "is_blood_report": false
+    }
+  },
+  {
+    "id": "off_topic_text",
+    "description": "A symptom question with no report: the agent must not invent findings.",
+    "inputs": {
+      "report": "I feel tired all the time and my hair is falling out. What should I eat?"
+    },
+    "outputs": {
+      "findings": [],
+      "is_blood_report": false
+    }
+  },
+  {
+    "id": "off_topic_document",
+    "description": "A restaurant bill laid out like a table of numbers: looks like a report but is not a blood report.",
+    "inputs": {
+      "image": "images/restaurant_bill.png"
+    },
+    "outputs": {
+      "findings": [],
+      "is_blood_report": false
+    }
+  }
+]
